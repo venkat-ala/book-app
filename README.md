@@ -1,6 +1,6 @@
 # Book App
 
-This project is to list out books with pagination using Data Tables
+This project is to list out books with pagination
 
 ## Development server
 
