@@ -13,7 +13,7 @@ import {LocalStorageService, LocalStorage} from 'ngx-webstorage';
 export class AppComponent {
   title = 'Book-App';
   display='none';
-
+  page =1;
   books = [
   {
         "Name": "The Invitable",
