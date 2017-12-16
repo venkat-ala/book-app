@@ -1,0 +1,103 @@
+<div class="container">
+    <div class="jumbotron">
+        <h1>List of Books</h1>
+    </div>
+    <div class="row">
+        <div class=col-lg-6>
+            <table datatable class="table">
+                <thead>
+                    <tr>
+                        <th>S.No</th>
+                        <th>Book Name</th>
+						<th>Action</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let book of books; let i = index">
+                        <th scope="row">{{i+1}}</th>
+                        <td>{{book.Name}}</td>
+						<td> <a class="book-details" (click)="openModal(book)">View BookDetails</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Book details Modal-->
+
+<div class="backdrop" [ngStyle]="{'display':display}"></div>
+
+<div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}">
+
+  <div class="modal-dialog" role="document">
+
+    <div class="modal-content">
+
+      <div class="modal-header">
+
+        <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span aria-hidden="true">&times;</span></button>
+
+      </div>
+      <h4 class="modal-title">Book Details</h4>
+      <h6 *ngIf="submitted" style="color: green;">Book details updated successfully!</h6>
+     
+      <div class="modal-body">
+
+        <form *ngIf="active" (ngSubmit)="onSubmit(book)" #bookForm="ngForm">
+        <div class="form-group">
+            <label for="bookName">Book Name</label> <input type="text"
+                class="form-control" id="bookName"
+                required
+               [(ngModel)]="book.Name" name="bookName"
+                #bookName="ngModel">
+            <div [hidden]="bookName.valid || bookName.pristine"
+                class="alert alert-danger">Book Name is required field.</div>
+        </div>
+        <div class="form-group">
+            <label for="author">Author</label> <input type="text"
+                class="form-control" id="author"
+                required
+               [(ngModel)]="book.Author" name="author"
+                #author="ngModel">
+            <div [hidden]="author.valid || author.pristine"
+                class="alert alert-danger">Author is required field.</div>
+        </div>
+        <div class="form-group">
+            <label for="noOfPages">No Of pages</label> <input type="number"
+                class="form-control" id="noOfPages"
+                required
+               [(ngModel)]="book.NumberOfPages" name="noOfPages"
+                #noOfPages="ngModel">
+            <div [hidden]="noOfPages.valid || noOfPages.pristine"
+                class="alert alert-danger">NumberOfPages is required field.</div>
+        </div>
+
+         <div class="form-group">
+            <label for="publication">Date Of Publication</label> <input type="text"
+                class="form-control" id="publication"
+                required
+               [(ngModel)]="book.DateOfPublication" name="publication"
+                #publication="ngModel">
+            <div [hidden]="publication.valid || publication.pristine"
+                class="alert alert-danger">Date Of Publication is required field.</div>
+        </div>
+        
+ 
+        <button type="submit" [disabled]="!bookForm.valid" class="btn btn-danger">Save</button>
+        <button type="button" class="btn btn-warning" (click)="default()">Clear</button>
+    </form>
+
+      </div>
+
+      <div class="modal-footer">
+
+        <button type="button" class="btn btn-default" (click)="onCloseHandled()" >Close</button>
+
+      </div>
+
+    </div><!-- /.modal-content -->
+
+  </div><!-- /.modal-dialog -->
+
+</div><!-- /.modal !-->
