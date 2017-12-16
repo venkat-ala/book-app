@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import { Router } from '@angular/router';
 import {LocalStorageService, LocalStorage} from 'ngx-webstorage';
 
@@ -8,6 +8,8 @@ import {LocalStorageService, LocalStorage} from 'ngx-webstorage';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
+
 export class AppComponent {
   title = 'Book-App';
   display='none';

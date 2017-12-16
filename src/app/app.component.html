@@ -14,10 +14,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let book of books; let i = index">
+                    <tr *ngFor="let book of books | sortBy : 'Name'; let i = index">
                         <th scope="row">{{i+1}}</th>
                         <td>{{book.Name}}</td>
-						<td> <a class="book-details" (click)="openModal(book)">View BookDetails</a></td>
+						<td> <a class="book-details" (click)="openModal(book)">Edit Book</a></td>
                     </tr>
                 </tbody>
             </table>
@@ -46,46 +46,46 @@
 
         <form *ngIf="active" (ngSubmit)="onSubmit(book)" #bookForm="ngForm">
         <div class="form-group">
-            <label for="bookName">Book Name</label> <input type="text"
+            <label for="bookName">Book Name<span class="req">*</span></label> <input type="text"
                 class="form-control" id="bookName"
                 required
                [(ngModel)]="book.Name" name="bookName"
                 #bookName="ngModel">
             <div [hidden]="bookName.valid || bookName.pristine"
-                class="alert alert-danger">Book Name is required field.</div>
+                class="alert alert-danger">Book Name is required.</div>
         </div>
         <div class="form-group">
-            <label for="author">Author</label> <input type="text"
+            <label for="author">Author<span class="req">*</span></label> <input type="text"
                 class="form-control" id="author"
                 required
                [(ngModel)]="book.Author" name="author"
                 #author="ngModel">
             <div [hidden]="author.valid || author.pristine"
-                class="alert alert-danger">Author is required field.</div>
+                class="alert alert-danger">Author is required.</div>
         </div>
         <div class="form-group">
-            <label for="noOfPages">No Of pages</label> <input type="number"
+            <label for="noOfPages">No Of pages<span class="req">*</span></label> <input type="number"
                 class="form-control" id="noOfPages"
                 required
                [(ngModel)]="book.NumberOfPages" name="noOfPages"
                 #noOfPages="ngModel">
             <div [hidden]="noOfPages.valid || noOfPages.pristine"
-                class="alert alert-danger">NumberOfPages is required field.</div>
+                class="alert alert-danger">NumberOfPages is required.</div>
         </div>
 
          <div class="form-group">
-            <label for="publication">Date Of Publication</label> <input type="text"
+            <label for="publication">Date Of Publication<span class="req">*</span></label> <input type="text"
                 class="form-control" id="publication"
                 required
                [(ngModel)]="book.DateOfPublication" name="publication"
                 #publication="ngModel">
             <div [hidden]="publication.valid || publication.pristine"
-                class="alert alert-danger">Date Of Publication is required field.</div>
+                class="alert alert-danger">Date Of Publication is required.</div>
         </div>
         
  
         <button type="submit" [disabled]="!bookForm.valid" class="btn btn-danger">Save</button>
-        <button type="button" class="btn btn-warning" (click)="default()">Clear</button>
+        <button type="button" [disabled]="!bookForm.valid" class="btn btn-warning" (click)="default()">Clear</button>
     </form>
 
       </div>

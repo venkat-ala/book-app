@@ -17,3 +17,6 @@ height:100vh;
 	color: blue !important;
 	cursor: pointer;
 }
+.req{
+	color: red;
+}
