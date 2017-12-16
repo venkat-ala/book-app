@@ -1,6 +1,6 @@
-# DataTables
+# Book App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.1.
+This project is to list out books with pagination using Data Tables
 
 ## Development server
 
